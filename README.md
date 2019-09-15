@@ -1,2 +1,46 @@
 WordPress, the automated way – DEMO
 ===================================
+
+## Usage
+
+### Prerequesites
+
+The project requires the following tools to be built and run:
+
+* Docker
+* Docker Compose
+
+### Define environment variables
+
+Create a .env file at the root of the project with the following configuration:
+
+    MYSQL_ROOT_PASSWORD=my_root_password
+    MYSQL_DATABASE=wordpress
+    MYSQL_USER=wordpress
+    MYSQL_USER_PASSWORD=wordpress_pwd
+    WEBSERVER_PORT=1234
+
+* `MYSQL_ROOT_PASSWORD`: Password for the *root* user in MySQL (no app should connect with it) — recommendation: complex password
+* `MYSQL_DATABASE`: Name of the MySQL database used for WordPress — recommendation: *wordpress*
+* `MYSQL_USER`: MySQL username that WordPress will use to connect to the database — recommendation: *wordpress*
+* `MYSQL_USER_PASSWORD`: Password for WordPress MySQL user — recommendation: complex password
+* `WEBSERVER_PORT`: **Port that will be exposed for Nginx** (Example if *8000* is chosen, the website will be locally available at http://localhost:8000).
+
+### Run project
+
+Start containers:
+
+    docker-compose up -d
+
+Visit http://localhost:8000.
+
+## Docker configuration
+
+The following containers are created and configured in `docker-compose.yml`:
+
+* *webserver*: A Nginx Docker image.
+* *wordpress*: A WordPress Docker image with PHP 7.3.
+* *database*: A MySQL Docker image.
+
+The `restart: always` instruction allows containers to get restarted if they stop for any reason
+or when the server is restarted.

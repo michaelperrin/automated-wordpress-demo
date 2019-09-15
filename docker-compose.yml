@@ -1,0 +1,36 @@
+version: '3.4'
+services:
+  wordpress:
+    image: wordpress:5.2-php7.3-fpm-alpine
+    links:
+      - database:mysql
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wp-content:/var/www/html/wp-content
+    restart: always
+
+  database:
+    image: mysql:5.7
+    restart: always
+    volumes:
+       - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+
+  webserver:
+    image: nginx:1.14-alpine
+    links:
+      - wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./docker/nginx/website.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./wp-content:/var/www/html/wp-content
+    ports:
+      - ${WEBSERVER_PORT}:80
+
+volumes:
+  db_data: {}
+  wordpress_data: {}
