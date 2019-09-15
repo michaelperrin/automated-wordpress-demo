@@ -19,6 +19,8 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+    ports:
+      - 3306:3306
 
   webserver:
     image: nginx:1.14-alpine
