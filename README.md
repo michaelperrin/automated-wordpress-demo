@@ -18,7 +18,7 @@ Create a .env file at the root of the project with the following configuration:
     MYSQL_DATABASE=wordpress
     MYSQL_USER=wordpress
     MYSQL_USER_PASSWORD=wordpress_pwd
-    WEBSERVER_PORT=1234
+    WEBSERVER_PORT=8000
 
 * `MYSQL_ROOT_PASSWORD`: Password for the *root* user in MySQL (no app should connect with it) — recommendation: complex password
 * `MYSQL_DATABASE`: Name of the MySQL database used for WordPress — recommendation: *wordpress*
