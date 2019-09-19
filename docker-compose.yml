@@ -33,24 +33,27 @@ services:
     ports:
       - ${WEBSERVER_PORT}:80
 
-  wp_cli:
-    build: ./docker/wp-cli/
+  toolbox:
+    build: ./docker/wp-toolbox/
     volumes:
       - wordpress_data:/wordpress
       - ./wp-content:/wordpress/wp-content
+      - ./docker/wp-toolbox/Makefile:/wordpress/Makefile
     depends_on:
       - database
     environment:
-      WORDPRESS_LOCALE: en_US
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_USER_PASSWORD: ${MYSQL_USER_PASSWORD}
-      WORDPRESS_WEBSITE_TITLE: "My beautiful website"
-      WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%year%/%monthnum%/%day%/%postname%/"
-      WORDPRESS_ADMIN_USER: ${WORDPRESS_ADMIN_USERNAME}
-      WORDPRESS_ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD}
       WORDPRESS_ADMIN_EMAIL: ${WORDPRESS_ADMIN_EMAIL}
+      WORDPRESS_ADMIN_PASSWORD: ${WORDPRESS_ADMIN_PASSWORD}
+      WORDPRESS_ADMIN_USER: ${WORDPRESS_ADMIN_USERNAME}
+      WORDPRESS_DOMAIN_NAME: ${WORDPRESS_DOMAIN_NAME}
+      WORDPRESS_WEBSITE_URL: ${WORDPRESS_WEBSITE_URL}
+      WORDPRESS_LOCALE: en_US
+      WORDPRESS_WEBSITE_POST_URL_STRUCTURE: "/%year%/%monthnum%/%day%/%postname%/"
+      WORDPRESS_WEBSITE_TITLE: "My beautiful website"
 
 volumes:
   db_data: {}

@@ -1,12 +1,9 @@
-WP_CLI=@docker-compose run --rm wp_cli sh -c
+WORDPRESS_TOOLBOX=@docker-compose run --rm toolbox
+
+install: wordpress_configure
 
 wordpress_configure:
 	@echo "➡️ Configure Wordpress..."
-	$(WP_CLI) 'wp-cli config create \
-		--dbhost=$$MYSQL_HOST \
-		--dbname=$$MYSQL_DATABASE \
-		--dbuser=$$MYSQL_USER \
-		--dbpass=$$MYSQL_USER_PASSWORD \
-		--locale=$$WORDPRESS_LOCALE \
-		--skip-check'
+	$(WORDPRESS_TOOLBOX) configure
+	$(WORDPRESS_TOOLBOX) configure_url
 	@echo "✅ Wordpress is configured."

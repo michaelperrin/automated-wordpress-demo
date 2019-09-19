@@ -15,3 +15,5 @@ RUN docker-php-ext-install mysqli
 USER www-data
 
 WORKDIR /wordpress
+
+ENTRYPOINT [ "make", "-f", "/scripts/Makefile" ]

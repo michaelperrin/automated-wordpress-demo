@@ -19,6 +19,8 @@ Create a .env file at the root of the project with the following configuration:
     MYSQL_DATABASE=wordpress
     MYSQL_USER=wordpress
     MYSQL_USER_PASSWORD=wordpress_pwd
+    WORDPRESS_DOMAIN_NAME=localhost:8000
+    WORDPRESS_WEBSITE_URL=http://localhost:8000
     WORDPRESS_ADMIN_USERNAME=admin
     WORDPRESS_ADMIN_PASSWORD=vancouver2019
     WORDPRESS_ADMIN_EMAIL=test@example.com
@@ -29,6 +31,8 @@ Create a .env file at the root of the project with the following configuration:
 * `MYSQL_DATABASE`: Name of the MySQL database used for WordPress — recommendation: *wordpress*
 * `MYSQL_USER`: MySQL username that WordPress will use to connect to the database — recommendation: *wordpress*
 * `MYSQL_USER_PASSWORD`: Password for WordPress MySQL user — recommendation: complex password
+* `WORDPRESS_DOMAIN_NAME`: Domain name of the Wordpress public address (the one seen from a browser).
+* `WORDPRESS_WEBSITE_URL`: Domain name of the Wordpress public address with `http://` or `https://` at the beginning.
 * `WORDPRESS_ADMIN_EMAIL`: Email address of the admin user for WordPress admin interface.
 * `WORDPRESS_ADMIN_USERNAME`: Username of the admin user for WordPress admin interface (example: *admin*)
 * `WORDPRESS_ADMIN_PASSWORD`: Password of the admin user (choose wisely!).
