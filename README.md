@@ -42,7 +42,7 @@ Create a .env file at the root of the project with the following configuration:
 
 Start containers:
 
-    docker-compose up -d
+    make start
 
 Visit http://localhost:8000.
 
@@ -53,6 +53,7 @@ The following containers are created and configured in `docker-compose.yml`:
 * *webserver*: A Nginx Docker image.
 * *wordpress*: A WordPress Docker image with PHP 7.3.
 * *database*: A MySQL Docker image.
+* *toolbox*: A toolbox containing WP-CLI and running a Makefile.
 
 The `restart: always` instruction allows containers to get restarted if they stop for any reason
 or when the server is restarted.

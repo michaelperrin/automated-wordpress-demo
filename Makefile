@@ -1,5 +1,11 @@
 WORDPRESS_TOOLBOX=@docker-compose run --rm toolbox
 
+start:
+	docker-compose up -d
+
+stop:
+	docker-compose stop
+
 install: wordpress_configure
 
 wordpress_configure:
