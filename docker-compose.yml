@@ -38,7 +38,7 @@ services:
     volumes:
       - wordpress_data:/wordpress
       - ./wp-content:/wordpress/wp-content
-      - ./docker/wp-toolbox/Makefile:/wordpress/Makefile
+      - ./docker/wp-toolbox/Makefile:/scripts/Makefile
     depends_on:
       - database
     environment:

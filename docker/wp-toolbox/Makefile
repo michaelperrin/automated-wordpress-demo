@@ -5,7 +5,7 @@ configure:
 		--dbuser=${MYSQL_USER} \
 		--dbpass=${MYSQL_USER_PASSWORD} \
 		--locale=${WORDPRESS_LOCALE} \
-		--skip-check
+		--skip-check \
 		--force
 
 	wp-cli core install \
