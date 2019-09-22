@@ -19,3 +19,8 @@ configure_url:
 	wp-cli option update siteurl "${WORDPRESS_WEBSITE_URL}"
 	wp-cli rewrite structure $(WORDPRESS_WEBSITE_POST_URL_STRUCTURE)
 	wp-cli rewrite flush
+
+install_plugins:
+	wp-cli plugin install contact-form-7 --activate
+	wp-cli plugin install mailchimp-for-wp --activate
+	wp-cli plugin install advanced-custom-fields --activate

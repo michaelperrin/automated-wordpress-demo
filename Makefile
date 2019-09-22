@@ -6,10 +6,15 @@ start:
 stop:
 	docker-compose stop
 
-install: wordpress_configure
+install: start wordpress_configure wordpress_install_plugins
 
 wordpress_configure:
-	@echo "➡️ Configure Wordpress..."
+	@echo "➡️ Configuring WordPress..."
 	$(WORDPRESS_TOOLBOX) configure
 	$(WORDPRESS_TOOLBOX) configure_url
-	@echo "✅ Wordpress is configured."
+	@echo "✅ WordPress is configured."
+
+wordpress_install_plugins:
+	@echo "➡️ Installing and activating plugins..."
+	$(WORDPRESS_TOOLBOX) install_plugins
+	@echo "✅ WordPress plugins are installed."
