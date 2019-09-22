@@ -19,6 +19,9 @@ wordpress_install_plugins:
 	$(WORDPRESS_TOOLBOX) run_install_plugins
 	@echo "✅ WordPress plugins are installed."
 
+wordpress_run_migrations:
+	$(WORDPRESS_TOOLBOX) run_migrations
+
 run_configure:
 	wp-cli config create \
 		--dbhost=${MYSQL_HOST} \
@@ -45,3 +48,7 @@ run_install_plugins:
 	wp-cli plugin install contact-form-7 --activate
 	wp-cli plugin install mailchimp-for-wp --activate
 	wp-cli plugin install advanced-custom-fields --activate
+	wp-cli plugin activate wp-migrations
+
+run_migrations:
+	wp-cli migrations migrate
