@@ -8,25 +8,15 @@
 
 require 'vendor/autoload.php';
 
-use WP\Migration\Runner;
-use WP\Migration\WordPressOptionStorage;
+use WP\Command\Migrations\ExecuteCommand;
+use WP\Command\Migrations\GenerateCommand;
 
-if (defined('WP_CLI') && WP_CLI) {
-    WP_CLI::add_command('migrations migrate', function () {
-        $outputWriter = function ($message, $status = null) {
-            if ($status === 'success') {
-                WP_CLI::success($message);
-            } elseif ($status === 'error') {
-                WP_CLI::error($message);
-            } else {
-                WP_CLI::log($message);
-            }
-        };
-
-        $storage = new WordPressOptionStorage();
-        $migrationRunner = new Runner($storage, $outputWriter);
-        $migrationRunner->run();
-
-        WP_CLI::success('Migrations are up to date');
-    });
+function registerCommands()
+{
+    if (defined('WP_CLI') && WP_CLI) {
+        GenerateCommand::register();
+        ExecuteCommand::register();
+    }
 }
+
+registerCommands();

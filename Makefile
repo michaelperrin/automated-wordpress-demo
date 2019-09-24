@@ -19,8 +19,11 @@ wordpress_install_plugins:
 	$(WORDPRESS_TOOLBOX) run_install_plugins
 	@echo "✅ WordPress plugins are installed."
 
-wordpress_run_migrations:
-	$(WORDPRESS_TOOLBOX) run_migrations
+wordpress_migrations_generate:
+	$(WORDPRESS_TOOLBOX) run_migrations_generate
+
+wordpress_migrations_execute:
+	$(WORDPRESS_TOOLBOX) run_migrations_execute
 
 run_configure:
 	wp-cli config create \
@@ -50,5 +53,8 @@ run_install_plugins:
 	wp-cli plugin install advanced-custom-fields --activate
 	wp-cli plugin activate wp-migrations
 
-run_migrations:
-	wp-cli migrations migrate
+run_migrations_generate:
+	wp-cli migrations generate
+
+run_migrations_execute:
+	wp-cli migrations execute
