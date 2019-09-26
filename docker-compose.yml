@@ -6,7 +6,6 @@ services:
       - database:mysql
     volumes:
       - wordpress_data:/var/www/html
-      - ./wp-content:/var/www/html/wp-content
       - ./plugins/wp-migrations:/var/www/html/wp-content/plugins/wp-migrations
       - ./themes/my-simple-theme:/var/www/html/wp-content/themes/my-simple-theme
     restart: always
@@ -33,7 +32,6 @@ services:
       - ./docker/nginx/website.conf:/etc/nginx/conf.d/default.conf:ro
       - ./plugins/wp-migrations:/var/www/html/wp-content/plugins/wp-migrations
       - ./themes/my-simple-theme:/var/www/html/wp-content/themes/my-simple-theme
-      - ./wp-content:/var/www/html/wp-content
     ports:
       - ${WEBSERVER_PORT}:80
 
@@ -41,7 +39,6 @@ services:
     image: michaelperrin/wordpress-toolbox
     volumes:
       - wordpress_data:/wordpress
-      - ./wp-content:/wordpress/wp-content
       - ./plugins/wp-migrations:/wordpress/wp-content/plugins/wp-migrations
       - ./themes/my-simple-theme:/wordpress/wp-content/themes/my-simple-theme
       - ./migrations:/wordpress/wp-content/migrations
