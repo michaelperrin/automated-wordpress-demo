@@ -40,11 +40,21 @@ Create a .env file at the root of the project with the following configuration:
 
 ### Run project
 
+Run installation first:
+
+    make install
+
 Start containers:
 
     make start
 
-Visit http://localhost:8000.
+Visit http://localhost:8000
+
+### Run phpMyAdmin
+
+I have added phpMyAdmin for demonstration purpose of Docker Compose.
+
+Access it on http://localhost:8082
 
 ## Docker configuration
 
