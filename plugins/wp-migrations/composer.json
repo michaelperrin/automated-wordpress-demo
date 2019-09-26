@@ -1,5 +1,6 @@
 {
     "name": "michaelperrin/wp-migrations",
+    "description": "WordPress plugin for running data migrations",
     "authors": [
         {
             "name": "Michaël Perrin",
