@@ -8,6 +8,7 @@ services:
       - wordpress_data:/var/www/html
       - ./wp-content:/var/www/html/wp-content
       - ./plugins/wp-migrations:/var/www/html/wp-content/plugins/wp-migrations
+      - ./themes/my-simple-theme:/var/www/html/wp-content/themes/my-simple-theme
     restart: always
 
   database:
@@ -31,6 +32,7 @@ services:
       - wordpress_data:/var/www/html
       - ./docker/nginx/website.conf:/etc/nginx/conf.d/default.conf:ro
       - ./plugins/wp-migrations:/var/www/html/wp-content/plugins/wp-migrations
+      - ./themes/my-simple-theme:/var/www/html/wp-content/themes/my-simple-theme
       - ./wp-content:/var/www/html/wp-content
     ports:
       - ${WEBSERVER_PORT}:80
@@ -41,6 +43,7 @@ services:
       - wordpress_data:/wordpress
       - ./wp-content:/wordpress/wp-content
       - ./plugins/wp-migrations:/wordpress/wp-content/plugins/wp-migrations
+      - ./themes/my-simple-theme:/wordpress/wp-content/themes/my-simple-theme
       - ./migrations:/wordpress/wp-content/migrations
       - ./Makefile:/scripts/Makefile
     depends_on:

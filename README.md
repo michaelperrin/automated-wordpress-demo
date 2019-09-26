@@ -56,6 +56,23 @@ I have added phpMyAdmin for demonstration purpose of Docker Compose.
 
 Access it on http://localhost:8082
 
+### What does it do?
+
+Running the `make install` command will:
+
+* Create Docker containers for WordPress, MySQL and Nginx.
+* Initiate the WordPress database.
+* Configure WordPress:
+    * Database parameters.
+    * Default WordPress user.
+    * Set language.
+    * Set default URL structure.
+* Activate the custom `my-simple-theme` theme.
+* Install plugins (Contact Form 7 and WP MailChimp as examples).
+* Create an "About us" page (which has a specific template in the custom theme).
+
+☑️ The project should be then be up and running.
+
 ## Docker configuration
 
 The following containers are created and configured in `docker-compose.yml`:

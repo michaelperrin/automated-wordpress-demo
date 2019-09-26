@@ -6,7 +6,7 @@ start:
 stop:
 	docker-compose stop
 
-install: start wordpress_configure wordpress_install_plugins
+install: start wordpress_configure wordpress_install_plugins wordpress_set_theme
 
 wordpress_configure:
 	@echo "➡️ Configuring WordPress..."
@@ -24,6 +24,9 @@ wordpress_migrations_generate:
 
 wordpress_migrations_execute:
 	$(WORDPRESS_TOOLBOX) run_migrations_execute
+
+wordpress_set_theme:
+	$(WORDPRESS_TOOLBOX) run_set_theme
 
 run_configure:
 	wp-cli config create \
@@ -58,3 +61,6 @@ run_migrations_generate:
 
 run_migrations_execute:
 	wp-cli migrations execute
+
+run_set_theme:
+	wp-cli theme activate my-simple-theme
