@@ -2,6 +2,8 @@ version: '3.4'
 services:
   wordpress:
     image: wordpress:5.3-php7.4-fpm-alpine
+    depends_on:
+      - database
     links:
       - database:mysql
     volumes:
@@ -25,6 +27,7 @@ services:
 
   webserver:
     image: nginx:1.14-alpine
+    restart: always
     links:
       - wordpress
     volumes:
