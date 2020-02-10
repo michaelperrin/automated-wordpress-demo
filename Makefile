@@ -47,6 +47,7 @@ run_configure:
 
 run_configure_url:
 	wp-cli option update siteurl "${WORDPRESS_WEBSITE_URL}"
+	wp-cli option update home "${WORDPRESS_WEBSITE_URL}"
 	wp-cli rewrite structure $(WORDPRESS_WEBSITE_POST_URL_STRUCTURE)
 	wp-cli rewrite flush
 
