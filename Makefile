@@ -1,7 +1,7 @@
 WORDPRESS_TOOLBOX=@docker-compose run --rm toolbox
 
 start:
-	docker-compose up -d
+	docker-compose up -d --remove-orphans
 
 stop:
 	docker-compose stop
@@ -14,7 +14,10 @@ wordpress_configure:
 	$(WORDPRESS_TOOLBOX) run_configure_url
 	@echo "✅ WordPress is configured."
 
-wordpress_install_plugins:
+wordpress_fix_permissions:
+	docker-compose exec -T wordpress chown -R www-data /var/www/html/wp-content
+
+wordpress_install_plugins: wordpress_fix_permissions
 	@echo "➡️ Installing and activating plugins..."
 	$(WORDPRESS_TOOLBOX) run_install_plugins
 	@echo "✅ WordPress plugins are installed."
