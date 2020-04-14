@@ -15,7 +15,9 @@ wordpress_configure:
 	@echo "✅ WordPress is configured."
 
 wordpress_fix_permissions:
-	docker-compose exec -T wordpress chown -R www-data /var/www/html/wp-content
+	docker-compose exec -T wordpress chown www-data /var/www/html/wp-content
+	docker-compose exec -T wordpress chown www-data /var/www/html/wp-content/plugins
+	docker-compose exec -T wordpress chown www-data /var/www/html/wp-content/themes
 
 wordpress_install_plugins: wordpress_fix_permissions
 	@echo "➡️ Installing and activating plugins..."
