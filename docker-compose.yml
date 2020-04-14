@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   wordpress:
-    image: wordpress:5.3-php7.4-fpm-alpine
+    image: wordpress:5.4-php7.4-fpm-alpine
     depends_on:
       - database
     links:
